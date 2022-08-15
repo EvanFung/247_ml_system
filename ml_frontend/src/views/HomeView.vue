@@ -19,12 +19,12 @@
                 </el-card>
               </el-col>
               <el-col :span="8">
-                <el-card shadow="hover" @click="handleSelectModel('SVM')">
+                <el-card shadow="hover" @click="handleSelectModel('Decision_Tree')">
                   <div class="card-content">Decision Tree</div>
                 </el-card>
               </el-col>
               <el-col :span="8">
-                <el-card shadow="hover" @click="handleSelectModel('Decision_Tree')">
+                <el-card shadow="hover" @click="handleSelectModel('SVM')">
                   <div class="card-content">Support Vector Machine</div>
                 </el-card>
               </el-col>
