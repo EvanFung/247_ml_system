@@ -2,13 +2,14 @@
   <div class="common-layout">
     <el-container>
       <el-main>
-        <el-tabs v-model="activeName" type="card" @tab-click="handleClick" stretch="true">
+        <el-tabs v-model="activeName" type="card" @tab-click="handleClick" :stretch="true">
           <el-tab-pane label="Prediction" name="first">
             <el-row :gutter="12">
               <el-col>
                 <el-card shadow="hover">
-                  <div class="card-content">View Sample Data</div>
+                  <div class="card-content" @click="isShowTable = !isShowTable">View Sample Data</div>
                 </el-card>
+                <SampleTable v-if="isShowTable" />
               </el-col>
             </el-row>
             <el-divider />
@@ -47,6 +48,7 @@ import { ref } from 'vue'
 import type { TabsPaneContext } from 'element-plus'
 import PredictForm from '@/components/PredictForm.vue';
 import ScoreForm from '@/components/ScoreForm.vue';
+import SampleTable from '@/components/SampleTable.vue';
 export default defineComponent({
   setup() {
   },
@@ -56,6 +58,7 @@ export default defineComponent({
   components: {
     PredictForm,
     ScoreForm,
+    SampleTable,
   },
   data() {
     return {
@@ -63,7 +66,8 @@ export default defineComponent({
       form: {
         name: '',
       },
-      modelName: 'SVM'
+      modelName: 'SVM',
+      isShowTable: false,
     }
   },
   methods: {

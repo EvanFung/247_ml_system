@@ -9,6 +9,9 @@ class ModelService {
     getCatAtt(): Promise<any> {
         return http.get(`/cat_attribute`);
     }
+    getSample(): Promise<any> {
+        return http.get('/sample')
+    }
 }
 
 export default new ModelService();

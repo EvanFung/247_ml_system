@@ -113,7 +113,7 @@ export default defineComponent({
         getCatAttribute: function () {
             ModelService.getCatAtt().then((res: ResponseData) => {
                 this.cat_attribute = res.data;
-                console.log(this.cat_attribute);
+                // console.log(this.cat_attribute);
             })
                 .catch((e: Error) => {
                     console.log(e);

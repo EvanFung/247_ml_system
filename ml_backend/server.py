@@ -81,6 +81,15 @@ def attribute():
     return jsonify(res)
 
 
+@app.route("/sample", methods=['GET'])
+def sample():
+    try:
+        res = x_test.head(5).to_json(orient='records')
+        return res
+    except:
+        return jsonify({'trace': traceback.format_exc()})
+
+
 if __name__ == '__main__':
     try:
         port = int(sys.argv[1])  # This is for a command-line input
