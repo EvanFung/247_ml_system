@@ -15,17 +15,20 @@
             <el-divider />
             <el-row :gutter="12">
               <el-col :span="8">
-                <el-card shadow="hover" @click="handleSelectModel('Logistic_Regression')">
+                <el-card shadow="hover" @click="handleSelectModel('Logistic_Regression'); isActiveLR = !isActiveLR"
+                  :body-style="{ 'background-color': isActiveLR ? 'lightskyblue' : '' }">
                   <div class="card-content">Logistic Regression</div>
                 </el-card>
               </el-col>
               <el-col :span="8">
-                <el-card shadow="hover" @click="handleSelectModel('Decision_Tree')">
+                <el-card shadow="hover" @click="handleSelectModel('Decision_Tree'); isActiveDT = !isActiveDT"
+                  :body-style="{ 'background-color': isActiveDT ? 'lightskyblue' : '' }">
                   <div class="card-content">Decision Tree</div>
                 </el-card>
               </el-col>
               <el-col :span="8">
-                <el-card shadow="hover" @click="handleSelectModel('SVM')">
+                <el-card shadow="hover" @click="handleSelectModel('SVM'); isActiveSVM = !isActiveSVM"
+                  :body-style="{ 'background-color': isActiveSVM ? 'lightskyblue' : '' }">
                   <div class="card-content">Support Vector Machine</div>
                 </el-card>
               </el-col>
@@ -68,6 +71,9 @@ export default defineComponent({
       },
       modelName: 'SVM',
       isShowTable: false,
+      isActiveLR: false,
+      isActiveDT: false,
+      isActiveSVM: false,
     }
   },
   methods: {
@@ -76,6 +82,20 @@ export default defineComponent({
     },
     handleSelectModel: function (modelName: string) {
       this.modelName = modelName;
+    },
+  },
+  watch: {
+    isActiveLR(newValue) {
+      this.isActiveDT = false;
+      this.isActiveSVM = false;
+    },
+    isActiveDT(newValue) {
+      this.isActiveLR = false;
+      this.isActiveSVM = false;
+    },
+    isActiveSVM(newValue) {
+      this.isActiveLR = false;
+      this.isActiveDT = false;
     }
   }
 })
@@ -83,5 +103,9 @@ export default defineComponent({
 <style>
 .card-content {
   text-align: center;
+}
+
+.active {
+  background-color: lightskyblue;
 }
 </style>
